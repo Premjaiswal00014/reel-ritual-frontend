@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials - Reel Ritual</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="config.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo-section">
+                <span>🎬</span>
+                <span>REEL RITUAL</span>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Reels</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="order.html">Order Now</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons" id="authButtons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="container" style="padding: 4rem 2rem;">
+        <h1 class="section-title">Client Testimonials</h1>
+        <p style="text-align: center; color: var(--light-gray); margin-bottom: 3rem;">What our clients say about their experience with Reel Ritual</p>
+
+        <div class="grid grid-cols-2" id="testimonialsGrid">
+            <div class="spinner"></div>
+        </div>
+    </section>
+
+    <!-- SUBMIT TESTIMONIAL -->
+    <section style="background-color: var(--secondary-black); padding: 4rem 2rem;">
+        <div class="container">
+            <h2 class="section-title">Share Your Experience</h2>
+            
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div id="loginPromptTestimonial" class="alert alert-info">
+                    <strong>Note:</strong> You need to be logged in to submit a testimonial. 
+                    <a href="login.html" style="color: var(--gold); text-decoration: underline;">Login</a>
+                </div>
+
+                <form id="testimonialForm" style="display: none;">
+                    <div id="testimonialAlert"></div>
+
+                    <div class="form-group">
+                        <label for="testimonialTitle">Title *</label>
+                        <input type="text" id="testimonialTitle" placeholder="Give your testimonial a title..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="testimonialComment">Your Message *</label>
+                        <textarea id="testimonialComment" placeholder="Share your experience with us..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="testimonialRating">Rating *</label>
+                        <select id="testimonialRating" required>
+                            <option value="">Select rating</option>
+                            <option value="5">⭐⭐⭐⭐⭐ Excellent (5)</option>
+                            <option value="4">⭐⭐⭐⭐ Very Good (4)</option>
+                            <option value="3">⭐⭐⭐ Good (3)</option>
+                            <option value="2">⭐⭐ Fair (2)</option>
+                            <option value="1">⭐ Poor (1)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Submit Testimonial</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>🎬 Reel Ritual</h3>
+                    <p style="color: var(--light-gray);">Premium video content creation for modern brands.</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="https://www.instagram.com/_reelritual?igsh=MTRrdWwxODk1ZDg4Yw==" target="_blank" title="Instagram">📷</a>
+                        <a href="https://www.linkedin.com/in/rithik-shukla-3662a7258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" title="LinkedIn">💼</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/testimonials.js"></script>
+</body>
+</html>

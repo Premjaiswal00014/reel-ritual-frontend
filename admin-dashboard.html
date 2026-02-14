@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Reel Ritual</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="config.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo-section">
+                <span>🎬</span>
+                <span>REEL RITUAL</span>
+            </a>
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <span id="userGreeting" style="color: var(--gold);">Welcome, Owner</span>
+                <button class="btn btn-logout" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- DASHBOARD CONTAINER -->
+    <div class="dashboard-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item active">
+                    <a href="#" onclick="switchTab('upload-reel')">📹 Upload Reel</a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" onclick="switchTab('manage-reels')">📋 Manage Reels</a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" onclick="switchTab('orders')">📦 Orders</a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" onclick="switchTab('testimonials')">⭐ Testimonials</a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" onclick="switchTab('feedback')">💬 Feedback</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- UPLOAD REEL TAB -->
+            <div id="upload-reel" class="tab-content">
+                <h2 class="section-title">Upload New Reel</h2>
+                <form id="uploadReelForm" style="max-width: 600px;">
+                    <div id="uploadAlert"></div>
+
+                    <div class="form-group">
+                        <label for="reelTitle">Reel Title *</label>
+                        <input type="text" id="reelTitle" placeholder="Enter reel title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reelDescription">Description *</label>
+                        <textarea id="reelDescription" placeholder="Describe your reel..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reelCategory">Category *</label>
+                        <select id="reelCategory" required>
+                            <option value="">Select category</option>
+                            <option value="promotional">Promotional</option>
+                            <option value="product">Product</option>
+                            <option value="testimonial">Testimonial</option>
+                            <option value="educational">Educational</option>
+                            <option value="entertainment">Entertainment</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reelVideo">Video File *</label>
+                        <input type="file" id="reelVideo" accept="video/*" required>
+                        <small style="color: var(--dark-gray);">MP4, MOV, or AVI files</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reelThumbnail">Thumbnail Image *</label>
+                        <input type="file" id="reelThumbnail" accept="image/*" required>
+                        <small style="color: var(--dark-gray);">JPG or PNG image</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reelDuration">Duration (seconds)</label>
+                        <input type="number" id="reelDuration" min="0">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Upload Reel</button>
+                </form>
+            </div>
+
+            <!-- MANAGE REELS TAB -->
+            <div id="manage-reels" class="tab-content" style="display: none;">
+                <h2 class="section-title">Manage Reels</h2>
+                <div id="reelsTable">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <!-- ORDERS TAB -->
+            <div id="orders" class="tab-content" style="display: none;">
+                <h2 class="section-title">All Orders</h2>
+                <div id="ordersTable">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <!-- TESTIMONIALS TAB -->
+            <div id="testimonials" class="tab-content" style="display: none;">
+                <h2 class="section-title">Testimonials</h2>
+                <div id="testimonialsTable">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <!-- FEEDBACK TAB -->
+            <div id="feedback" class="tab-content" style="display: none;">
+                <h2 class="section-title">Client Feedback</h2>
+                <div id="feedbackTable">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

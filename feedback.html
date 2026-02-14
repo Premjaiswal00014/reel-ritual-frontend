@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Feedback - Reel Ritual</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="config.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo-section">
+                <span>🎬</span>
+                <span>REEL RITUAL</span>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Reels</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="order.html">Order Now</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons" id="authButtons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- FEEDBACK SECTION -->
+    <section class="container" style="padding: 4rem 2rem;">
+        <h1 class="section-title">Send Us Feedback</h1>
+        <p style="text-align: center; color: var(--light-gray); margin-bottom: 3rem;">We value your feedback and ideas. Let us know how we can improve.</p>
+
+        <div style="max-width: 600px; margin: 0 auto;">
+            <div id="loginPromptFeedback" class="alert alert-info">
+                <strong>Note:</strong> You need to be logged in to submit feedback. 
+                <a href="login.html" style="color: var(--gold); text-decoration: underline;">Login</a>
+            </div>
+
+            <form id="feedbackForm" style="display: none;">
+                <div id="feedbackAlert"></div>
+
+                <div class="form-group">
+                    <label for="feedbackOrderSelect">Related Order</label>
+                    <select id="feedbackOrderSelect">
+                        <option value="">Select an order (Optional)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedbackSubjectInput">Subject *</label>
+                    <input type="text" id="feedbackSubjectInput" placeholder="Feedback subject" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedbackCategoryInput">Category *</label>
+                    <select id="feedbackCategoryInput" required>
+                        <option value="">Select category</option>
+                        <option value="quality">Quality Issues</option>
+                        <option value="communication">Communication</option>
+                        <option value="delivery">Delivery Time</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedbackMessageInput">Message *</label>
+                    <textarea id="feedbackMessageInput" placeholder="Your detailed feedback..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedbackRatingInput">How would you rate your experience?</label>
+                    <select id="feedbackRatingInput">
+                        <option value="">Select rating</option>
+                        <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                        <option value="4">⭐⭐⭐⭐ Very Good</option>
+                        <option value="3">⭐⭐⭐ Good</option>
+                        <option value="2">⭐⭐ Fair</option>
+                        <option value="1">⭐ Poor</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Submit Feedback</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>🎬 Reel Ritual</h3>
+                    <p style="color: var(--light-gray);">Premium video content creation for modern brands.</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="https://www.instagram.com/_reelritual?igsh=MTRrdWwxODk1ZDg4Yw==" target="_blank" title="Instagram">📷</a>
+                        <a href="https://www.linkedin.com/in/rithik-shukla-3662a7258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" title="LinkedIn">💼</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (isLoggedIn()) {
+                document.getElementById('feedbackForm').style.display = 'block';
+                document.getElementById('loginPromptFeedback').style.display = 'none';
+                document.getElementById('feedbackForm').addEventListener('submit', handleFeedbackSubmit);
+                loadClientOrders();
+            }
+        });
+
+        async function loadClientOrders() {
+            try {
+                const response = await getOrders();
+                const orders = response.data || [];
+
+                const select = document.getElementById('feedbackOrderSelect');
+                orders.forEach(order => {
+                    const option = document.createElement('option');
+                    option.value = order._id;
+                    option.textContent = `${order.orderNumber} - ${order.packageType}`;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading orders:', error);
+            }
+        }
+
+        async function handleFeedbackSubmit(e) {
+            e.preventDefault();
+
+            try {
+                const order = document.getElementById('feedbackOrderSelect').value;
+                const subject = document.getElementById('feedbackSubjectInput').value;
+                const message = document.getElementById('feedbackMessageInput').value;
+                const category = document.getElementById('feedbackCategoryInput').value;
+                const rating = document.getElementById('feedbackRatingInput').value;
+
+                const feedbackData = {
+                    order: order || null,
+                    subject,
+                    message,
+                    category,
+                    rating: rating ? parseInt(rating) : null
+                };
+
+                const result = await createFeedback(feedbackData);
+
+                showAlert('feedbackAlert', 'Thank you! Your feedback has been submitted successfully.', 'success');
+                document.getElementById('feedbackForm').reset();
+
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            } catch (error) {
+                showAlert('feedbackAlert', error.message, 'error');
+            }
+        }
+    </script>
+</body>
+</html>

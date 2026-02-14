@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Reel Ritual</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="config.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo-section">
+                <span>🎬</span>
+                <span>REEL RITUAL</span>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Reels</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- LOGIN/SIGNUP SECTION -->
+    <section style="min-height: calc(100vh - 200px); display: flex; align-items: center; padding: 2rem;">
+        <div class="container" style="max-width: 500px;">
+            <div>
+                <h1 style="text-align: center; margin-bottom: 1rem;">Welcome Back</h1>
+                <p style="text-align: center; color: var(--light-gray); margin-bottom: 2rem;">Sign in to your account or create a new one</p>
+
+                <!-- TAB BUTTONS -->
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                    <button class="btn btn-gold" onclick="switchTab('login')" id="loginTabBtn" style="background: var(--gradient); flex: 1;">Login</button>
+                    <button class="btn" onclick="switchTab('signup')" id="signupTabBtn" style="border: 2px solid var(--gold); color: var(--gold); flex: 1;">Sign Up</button>
+                </div>
+
+                <!-- LOGIN FORM -->
+                <form id="loginForm" style="display: block;">
+                    <div id="loginAlert"></div>
+
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address *</label>
+                        <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Password *</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; margin-top: 1rem;">Login</button>
+                </form>
+
+                <!-- SIGNUP FORM -->
+                <form id="signupForm" style="display: none;">
+                    <div id="signupAlert"></div>
+
+                    <div class="form-group">
+                        <label for="signupName">Full Name *</label>
+                        <input type="text" id="signupName" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address *</label>
+                        <input type="email" id="signupEmail" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupPassword">Password *</label>
+                        <input type="password" id="signupPassword" placeholder="Create a password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupConfirmPassword">Confirm Password *</label>
+                        <input type="password" id="signupConfirmPassword" placeholder="Confirm your password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupRole">I am a...</label>
+                        <select id="signupRole" required>
+                            <option value="client">Client (Looking to place orders)</option>
+                            <option value="owner">Content Creator (Owner account)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; margin-top: 1rem;">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>🎬 Reel Ritual</h3>
+                    <p style="color: var(--light-gray);">Premium video content creation for modern brands.</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="https://www.instagram.com/_reelritual?igsh=MTRrdWwxODk1ZDg4Yw==" target="_blank" title="Instagram">📷</a>
+                        <a href="https://www.linkedin.com/in/rithik-shukla-3662a7258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" title="LinkedIn">💼</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

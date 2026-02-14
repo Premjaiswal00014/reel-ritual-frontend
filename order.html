@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order - Reel Ritual</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="config.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo-section">
+                <span>🎬</span>
+                <span>REEL RITUAL</span>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Reels</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="order.html">Order Now</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons" id="authButtons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ORDER SECTION -->
+    <section class="container" style="padding: 4rem 2rem;">
+        <h1 class="section-title">Place Your Order</h1>
+        
+        <div style="max-width: 600px; margin: 0 auto;">
+            <div id="loginPrompt" class="alert alert-info">
+                <strong>Note:</strong> You need to be logged in to place an order. 
+                <a href="login.html" style="color: var(--gold); text-decoration: underline;">Login or Sign Up</a>
+            </div>
+
+            <form id="orderForm" style="display: none;">
+                <div id="formAlert"></div>
+
+                <div class="form-group">
+                    <label for="packageType">Package Type *</label>
+                    <select id="packageType" required>
+                        <option value="">Select a package</option>
+                        <option value="basic">Basic - $500</option>
+                        <option value="standard">Standard - $1000</option>
+                        <option value="premium">Premium - $2000</option>
+                        <option value="custom">Custom Quote</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Project Description *</label>
+                    <textarea id="description" placeholder="Describe your video project, ideas, and vision..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="uploadPhotos">Upload Photos *</label>
+                    <input type="file" id="uploadPhotos" accept="image/*" multiple required>
+                    <small style="color: var(--dark-gray);">Upload product photos, reference images, or mood boards</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="uploadVideos">Upload Videos *</label>
+                    <input type="file" id="uploadVideos" accept="video/*" multiple required>
+                    <small style="color: var(--dark-gray);">Upload existing videos or source footage</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Budget (Optional)</label>
+                    <input type="number" id="budget" placeholder="Your budget in USD" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="deliveryDate">Desired Delivery Date (Optional)</label>
+                    <input type="date" id="deliveryDate">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Submit Order</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>🎬 Reel Ritual</h3>
+                    <p style="color: var(--light-gray);">Premium video content creation for modern brands.</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="https://www.instagram.com/_reelritual?igsh=MTRrdWwxODk1ZDg4Yw==" target="_blank" title="Instagram">📷</a>
+                        <a href="https://www.linkedin.com/in/rithik-shukla-3662a7258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" title="LinkedIn">💼</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/order.js"></script>
+</body>
+</html>

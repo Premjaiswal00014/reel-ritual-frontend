@@ -1,0 +1,26 @@
+{
+  "name": "reel-ritual-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Reel Ritual - Premium video content creation platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 3000 -o index.html",
+    "dev": "http-server -p 3000 -c-1",
+    "serve": "http-server -p 3000"
+  },
+  "keywords": [
+    "reel",
+    "video",
+    "showcase",
+    "content",
+    "creation"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

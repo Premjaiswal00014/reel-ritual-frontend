@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard - Reel Ritual</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="config.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo-section">
+                <span>🎬</span>
+                <span>REEL RITUAL</span>
+            </a>
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <span id="userGreeting" style="color: var(--gold);">Welcome, Client</span>
+                <button class="btn btn-logout" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- DASHBOARD CONTAINER -->
+    <div class="dashboard-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item active">
+                    <a href="#" onclick="switchTab('my-orders')">📦 My Orders</a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" onclick="switchTab('browse-reels')">🎬 Browse Reels</a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" onclick="switchTab('new-order')">➕ New Order</a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" onclick="switchTab('testimonials')">⭐ Testimonials</a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" onclick="switchTab('feedback')">💬 Send Feedback</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- MY ORDERS TAB -->
+            <div id="my-orders" class="tab-content">
+                <h2 class="section-title">My Orders</h2>
+                <div id="myOrdersTable">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <!-- BROWSE REELS TAB -->
+            <div id="browse-reels" class="tab-content" style="display: none;">
+                <h2 class="section-title">Browse Reels</h2>
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                    <input type="text" id="clientSearchInput" placeholder="Search reels..." style="flex: 1;">
+                    <select id="clientCategoryFilter" style="padding: 0.8rem; background-color: var(--tertiary-black); border: 1px solid var(--gold); color: var(--text-primary); border-radius: 5px; cursor: pointer;">
+                        <option value="">All Categories</option>
+                        <option value="promotional">Promotional</option>
+                        <option value="product">Product</option>
+                        <option value="testimonial">Testimonial</option>
+                        <option value="educational">Educational</option>
+                        <option value="entertainment">Entertainment</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-3" id="browseReelsGrid">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <!-- NEW ORDER TAB -->
+            <div id="new-order" class="tab-content" style="display: none;">
+                <h2 class="section-title">Place New Order</h2>
+                <form id="newOrderForm" style="max-width: 600px;">
+                    <div id="orderAlert"></div>
+
+                    <div class="form-group">
+                        <label for="orderPackageType">Package Type *</label>
+                        <select id="orderPackageType" required>
+                            <option value="">Select a package</option>
+                            <option value="basic">Basic - $500</option>
+                            <option value="standard">Standard - $1000</option>
+                            <option value="premium">Premium - $2000</option>
+                            <option value="custom">Custom Quote</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="orderDescription">Project Description *</label>
+                        <textarea id="orderDescription" placeholder="Describe your video project..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="orderReferenceFile">Reference File (Optional)</label>
+                        <input type="file" id="orderReferenceFile" accept="image/*,video/*,.pdf">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="orderBudget">Budget (Optional)</label>
+                        <input type="number" id="orderBudget" placeholder="Your budget in USD" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="orderDeliveryDate">Desired Delivery Date (Optional)</label>
+                        <input type="date" id="orderDeliveryDate">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Submit Order</button>
+                </form>
+            </div>
+
+            <!-- TESTIMONIALS TAB -->
+            <div id="testimonials" class="tab-content" style="display: none;">
+                <h2 class="section-title">View Testimonials</h2>
+                <div id="clientTestimonialsGrid" class="grid grid-cols-2">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <!-- FEEDBACK TAB -->
+            <div id="feedback" class="tab-content" style="display: none;">
+                <h2 class="section-title">Send Feedback</h2>
+                <form id="clientFeedbackForm" style="max-width: 600px;">
+                    <div id="feedbackAlert"></div>
+
+                    <div class="form-group">
+                        <label for="feedbackOrder">Order *</label>
+                        <select id="feedbackOrder" required>
+                            <option value="">Select an order</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feedbackSubject">Subject *</label>
+                        <input type="text" id="feedbackSubject" placeholder="Feedback subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feedbackCategory">Category *</label>
+                        <select id="feedbackCategory" required>
+                            <option value="">Select category</option>
+                            <option value="quality">Quality</option>
+                            <option value="communication">Communication</option>
+                            <option value="delivery">Delivery</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feedbackMessage">Message *</label>
+                        <textarea id="feedbackMessage" placeholder="Your feedback..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feedbackRating">Rating</label>
+                        <select id="feedbackRating">
+                            <option value="">Select rating</option>
+                            <option value="5">⭐⭐⭐⭐⭐ Excellent (5)</option>
+                            <option value="4">⭐⭐⭐⭐ Very Good (4)</option>
+                            <option value="3">⭐⭐⭐ Good (3)</option>
+                            <option value="2">⭐⭐ Fair (2)</option>
+                            <option value="1">⭐ Poor (1)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Submit Feedback</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/client-dashboard.js"></script>
+</body>
+</html>

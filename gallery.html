@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reels Gallery - Reel Ritual</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="config.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo-section">
+                <span>🎬</span>
+                <span>REEL RITUAL</span>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Reels</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="order.html">Order Now</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons" id="authButtons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- GALLERY SECTION -->
+    <section class="container" style="padding: 4rem 2rem;">
+        <h1 class="section-title">Our Reel Gallery</h1>
+        
+        <!-- SEARCH & FILTER -->
+        <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+            <input type="text" id="searchInput" placeholder="Search reels..." style="flex: 1; min-width: 200px;">
+            <select id="categoryFilter" style="padding: 0.8rem; background-color: var(--tertiary-black); border: 1px solid var(--gold); color: var(--text-primary); border-radius: 5px; cursor: pointer;">
+                <option value="">All Categories</option>
+                <option value="promotional">Promotional</option>
+                <option value="product">Product</option>
+                <option value="testimonial">Testimonial</option>
+                <option value="educational">Educational</option>
+                <option value="entertainment">Entertainment</option>
+            </select>
+        </div>
+
+        <!-- REELS GRID -->
+        <div class="grid grid-cols-3" id="reelsGrid">
+            <div class="spinner"></div>
+        </div>
+    </section>
+
+    <!-- REEL DETAIL MODAL -->
+    <div id="reelModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Reel Details</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="reelModalContent">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>🎬 Reel Ritual</h3>
+                    <p style="color: var(--light-gray);">Premium video content creation for modern brands.</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="https://www.instagram.com/_reelritual?igsh=MTRrdWwxODk1ZDg4Yw==" target="_blank" title="Instagram">📷</a>
+                        <a href="https://www.linkedin.com/in/rithik-shukla-3662a7258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" title="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="order.html">Order</a>
+                    <a href="testimonials.html">Testimonials</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Reel Ritual. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

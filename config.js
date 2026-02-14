@@ -1,11 +1,11 @@
-(function() {
-  const isDevelopment =
-    window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1";
+// Configuration for Reel Ritual Frontend
+// This file is loaded before other scripts to configure environment variables
 
-  window.API_BASE_URL = isDevelopment
-    ? "http://localhost:5000/api"
-    : "https://reel-ritual-backend.onrender.com/api";
+(function() {
+
+  // 🔴 IMPORTANT: LIVE Backend Render URL
+  window.API_BASE_URL = "https://reel-ritual-backend.onrender.com/api";
 
   console.log("API Base URL configured:", window.API_BASE_URL);
+
 })();

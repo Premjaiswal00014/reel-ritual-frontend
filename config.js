@@ -4,7 +4,8 @@
 (function() {
 
   // 🔴 IMPORTANT: LIVE Backend Render URL
-  window.API_BASE_URL = "https://reel-ritual-backend.onrender.com/api";
+  window.API_BASE_URL = "https://reel-ritual-api.onrender.com"
+;
 
   console.log("API Base URL configured:", window.API_BASE_URL);
 
